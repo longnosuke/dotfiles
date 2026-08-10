@@ -24,7 +24,17 @@ config.window_background_image_hsb = {
 
 config.color_scheme = "Catppuccin Macchiato"
 
+config.keys = {
+  {
+    key = 'k',
+    mods = 'CMD',
+    action = wezterm.action.Multiple {
+      wezterm.action.ClearScrollback 'ScrollbackAndViewport',
+      wezterm.action.SendKey { key = 'L', mods = 'CTRL' },
+    },
+  },
+}
+
 -- and finally, return the configuration to wezterm
 
 return config
-

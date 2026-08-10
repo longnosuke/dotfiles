@@ -64,11 +64,9 @@ if [ -d "/usr/local/opt/mysql-client@8.4/bin" ]; then
   export PATH="/usr/local/opt/mysql-client@8.4/bin:$PATH"
 fi
 
-# asdf
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-  . "$HOME/.asdf/asdf.sh"
-elif [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]; then
-  . "/opt/homebrew/opt/asdf/libexec/asdf.sh"
+# mise
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate --shims)"
 fi
 
 # Python environment
@@ -90,8 +88,6 @@ fi
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
-. ${ASDF_DATA_DIR:-$HOME/.asdf/plugins/golang/set-env.zsh}
 
 # Added by Antigravity
 export PATH="/Users/thamdavies/.antigravity/antigravity/bin:$PATH"
