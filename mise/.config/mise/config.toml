@@ -1,0 +1,22 @@
+
+# Global mise configuration (managed in ~/Github/dotfiles).
+# Per-project versions come from idiomatic files (.ruby-version, .node-version,
+# .python-version, .go-version, .tool-versions) or a project mise.toml.
+
+[tools]
+ruby = "4.0.2"
+node = { version = "24.17.0", postinstall = "npm install -g claudekit-cli" }
+go = "1.25.1"
+python = "3.13.7"
+uv = "latest"
+yarn = "latest"
+# Python CLIs go through the pipx backend (isolated venvs, survive Python
+# upgrades via `mise up python`). PyPI package is graphifyy (double-y).
+"pipx:graphifyy" = { version = "latest", extras = "all" }
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby", "node", "go", "python", "npm", "pnpm"]
+
+# Precompiled rubies: install in seconds, immune to OpenSSL/Xcode toolchain
+# drift. Compile-from-source only matters for custom configure flags.
+ruby.compile = false

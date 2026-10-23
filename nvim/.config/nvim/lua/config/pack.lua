@@ -14,7 +14,7 @@ vim.pack.add({
   { src = "https://github.com/olimorris/codecompanion.nvim", version = vim.version.range("^19.0.0") },
   { src = "https://github.com/stevearc/oil.nvim" },
   { src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
-  { src = "https://github.com/epwalsh/obsidian.nvim" },
+  -- { src = "https://github.com/epwalsh/obsidian.nvim" },
   { src = "https://github.com/hrsh7th/nvim-cmp" },
   { src = "https://github.com/monkoose/neocodeium" },
 })
@@ -61,14 +61,14 @@ local harpoon = require("harpoon")
 harpoon:setup()
 
 -- Obsidian
-require("obsidian").setup({
-  workspaces = {
-    {
-      name = "main",
-      path = "~/OneDrive/Personal/Obsidian/Vault/main",
-    },
-  },
-})
+-- require("obsidian").setup({
+--   workspaces = {
+--     {
+--       name = "main",
+--       path = "~/OneDrive/Personal/Obsidian/Vault/main",
+--     },
+--   },
+-- })
 
 require "config.keymaps"
 

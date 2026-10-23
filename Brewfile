@@ -1,0 +1,12 @@
+# Shell configuration dependencies. Install with: brew bundle
+brew "stow"
+brew "fzf"
+brew "fzf-tab"
+brew "zsh-completions"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+brew "starship"
+brew "mise"
+brew "lsd"
+brew "bison"
+brew "postgresql@16"

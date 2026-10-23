@@ -1,0 +1,35 @@
+# Appearance
+font-family = JetBrainsMono Nerd Font
+font-size = 18
+font-thicken = true
+theme = Dark Islands
+background-opacity = 1.0
+window-padding-x = 12
+window-padding-y = 8
+
+# Cursor
+cursor-style = bar
+cursor-style-blink = false
+adjust-cursor-thickness = 1
+
+# Copy/paste
+copy-on-select = clipboard
+clipboard-paste-protection = false
+
+# Mouse
+mouse-scroll-multiplier = 3
+
+# Global shortcut (centered floating)
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+quick-terminal-position = center
+quick-terminal-animation-duration = 0.15
+
+# macOS native
+macos-titlebar-style = tabs
+confirm-close-surface = false
+window-save-state = always
+resize-overlay = never
+
+# Shell integration
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title

@@ -1,0 +1,27 @@
+# Dark Islands (Ghostty)
+
+background = #181a1d
+foreground = #bcbec4
+cursor-color = #ced0d6
+selection-background = #264f78
+selection-foreground = #d4d5d9
+
+# Normal
+palette = 0=#2b2d31
+palette = 1=#f75464
+palette = 2=#4dba2a
+palette = 3=#e8a33e
+palette = 4=#548af7
+palette = 5=#c77dbb
+palette = 6=#1a9ea8
+palette = 7=#bcbec4
+
+# Bright
+palette = 8=#838891
+palette = 9=#f9667a
+palette = 10=#5dd52a
+palette = 11=#f0b95e
+palette = 12=#7cacf8
+palette = 13=#d79fd2
+palette = 14=#42c6d2
+palette = 15=#d4d5d9

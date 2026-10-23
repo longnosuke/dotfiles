@@ -1,48 +1,74 @@
-# dotfiles
-## Font
-```bash
- brew install font-jetbrains-mono-nerd-font
+# Dotfiles
+
+Active configuration lives here. GNU Stow links individual files into the home
+directory, so editing either path updates the same file.
+
+| Package | Active configuration |
+| --- | --- |
+| `shell`, `bash`, `zsh` | Shared profile and Bash/Zsh startup files |
+| `git` | Git preferences and global ignore rules |
+| `starship` | Prompt configuration |
+| `ghostty` | Terminal preferences and Dark Islands theme |
+| `mise` | Global runtime versions and Mise settings |
+| `zed` | Settings, keymap, and custom theme |
+| `nvim` | Neovim configuration, plugin settings, and lockfiles |
+| `tmux`, `wezterm` | Existing tmux and WezTerm configurations |
+
+`aerospace`, `alacritty`, and `vimrc` remain optional packages. Existing fonts
+and wallpapers stay in their directories.
+
+## Set up or restore links
+
+On macOS with Homebrew installed:
+
+```sh
+cd ~/Github/dotfiles
+brew bundle
+bash scripts/link-dotfiles.sh --simulate --verbose
+bash scripts/link-dotfiles.sh
+exec zsh
 ```
-## Ripgrep
-```bash
-brew install ripgrep stow
+
+Install Oh My Zsh at `~/.oh-my-zsh` using its
+[official instructions](https://ohmyz.sh/#install). Homebrew supplies completion
+and suggestion plugins; Starship supplies the prompt. Optional phpenv, Cargo,
+Bun, Vite+, OrbStack, and Amazon Q integrations require their own local
+installations. Generated integrations remain owned by those tools.
+
+The script refuses conflicting ordinary files. Back them up and compare them
+with this repository before retrying; do not use `stow --adopt` blindly.
+Use `DOTFILES_TARGET=/path/to/staging` to inspect links in an existing temporary
+directory. Optional packages can be linked with
+`stow --no-folding --target="$HOME" PACKAGE` from this directory.
+
+## Private settings
+
+- `private/.config/zsh/local.zsh`: shell credentials, account identifiers, and
+  machine-specific project aliases. Linked to `~/.config/zsh/local.zsh` and
+  loaded by the tracked Zsh configuration.
+- `private/.gitconfig.local`: Git identity, signing key selection, and credential
+  helpers. Linked to `~/.gitconfig.local` and included by the Git configuration.
+- Authentication stores, histories, databases, caches, and generated integrations
+  remain outside this repository.
+
+The entire `private/` package is Git-ignored and its directory is mode `700`.
+The link script includes it only when present. Keep private files at mode `600`
+and transfer them separately on another machine; Git will not sync them.
+Git signing requires its local signing provider. Zed's PHP stub include path
+is machine-specific and may need adjusting on another machine.
+
+## Editing and syncing
+
+Edit linked files normally, then inspect changes here:
+
+```sh
+git status --short
+git diff
 ```
-## Zsh
-1. Install `ohmyzsh`
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-2. Install `zsh-autosuggestions`
-```bash
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-```
-3. Install `powerlevel10k`
-```bash
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-```
-## Node
-#### Manually change npm's default directory
-1. On the command line, in your home directory, create a directory for global installations:
-```bash
-mkdir ~/.npm-global
-```
-2. Configure npm to use the new directory path:
-```bash
-npm config set prefix '~/.npm-global'
-```
-3. In your preferred text editor, open or create a ~/.zshrc file and add this line:
-```bash
-export PATH=~/.npm-global/bin:$PATH
-```
-4. On the command line, update your system variables:
-```
-source ~/.zshrc
-```
-## Usage
-```bash
-stow -v -t ~ tmux
-stow -v -t ~ nvim
-stow -v -t ~ wezterm
-stow -v -t ~ aerospace
-stow -v -t ~ alacritty
-```
+
+Symlinks keep local paths unified. GitHub sync still requires an explicit commit
+and push; it is not automatic. Pull reviewed changes on another machine and run
+the link script again if files were added or removed. Never force-add the
+ignored private package or machine backups to Git.
+
+See [Zsh and completion](zsh/README.md) for shell and preview details.
