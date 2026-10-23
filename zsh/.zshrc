@@ -29,7 +29,7 @@ alias phpstorm='open -na "PhpStorm.app" --args .'
 alias clion='open -na "CLion.app" --args .'
 
 # Local credentials and machine-specific aliases stay outside Git.
-[[ ! -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/local.zsh" ]] || source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/local.zsh"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/reload-private.zsh"
 
 
 # bison

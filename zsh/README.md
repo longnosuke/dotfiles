@@ -30,7 +30,7 @@ Selecting an item does not execute it.
 
 Credentials, account identifiers, and project-specific aliases live in the
 Git-ignored `private/.config/zsh/local.zsh` package file. Its active home path,
-`~/.config/zsh/local.zsh`, is a symlink. Zsh sources it if present. Maintain
+`~/.config/zsh/local.zsh`, is a symlink. Zsh loads it if present. Maintain
 mode `600` and transfer it separately on another machine.
 
 To add or update a credential, edit that private file:
@@ -39,8 +39,16 @@ To add or update a credential, edit that private file:
 nvim ~/.config/zsh/local.zsh
 ```
 
-For example, add `export CLOUDFLARE_API_TOKEN='replace-with-your-token'` there
-and run `exec zsh`. The existing `TUNNEL_TOKEN` is for cloudflared tunnel
+After saving, interactive Zsh terminals check the file before their next prompt
+and command. Changed or added exports load automatically. Activate this loader
+once in existing terminals with `exec zsh`; new terminals enable it at startup.
+Already-running programs keep their inherited environment until restarted.
+To remove a loaded variable, add `unset VARIABLE_NAME`; deleting its export line
+alone does not clear it from an existing shell. Syntax errors skip the reload
+and show a warning without printing the private file's contents.
+
+For example, add `export CLOUDFLARE_API_TOKEN='replace-with-your-token'` there.
+The existing `TUNNEL_TOKEN` is for cloudflared tunnel
 connectors; `CLOUDFLARE_API_TOKEN` is for Cloudflare API/CLI operations.
 Saved CLI logins remain managed by their applications.
 
