@@ -95,6 +95,7 @@ export PATH=$HOME/.opencode/bin:$PATH
 
 # Native command and flag descriptions for Tab completion.
 # Load after PATH setup so completion uses the installed CLI versions.
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/codex.zsh"
 if (( $+commands[ak] )); then
   source <(AK_NO_AUTO_UPDATE=1 ak completion zsh)
 fi

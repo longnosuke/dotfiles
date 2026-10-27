@@ -9,12 +9,13 @@ Oh My Zsh loads the `git` and `z` plugins. Starship owns the prompt.
 Tab, and `zsh-autosuggestions` supplies inline history suggestions.
 `zsh-autocomplete`, Powerlevel10k, and experimental menu colors are inactive.
 
-Native `ak completion zsh` and `cf complete zsh` scripts provide CLI subcommands
-and flag descriptions when those CLIs are installed.
+Native `ak completion zsh`, `cf complete zsh`, and `codex completion zsh`
+scripts provide CLI subcommands and flag descriptions when those CLIs are
+installed.
 
 ## Use completion
 
-1. Type `ak `, `ak kit `, `cf dns records `, or a command followed by `--`.
+1. Type `ak `, `ak kit `, `cf dns records `, `codex `, or a command followed by `--`.
 2. Press Tab to open fzf-tab and type to filter results.
 3. Navigate with arrow keys or Tab/Shift+Tab.
 4. Press Enter to insert a selection; press Enter again to execute.
@@ -25,6 +26,25 @@ show a detailed listing; text files show their first 200 lines. Binary and empty
 files show file-type information. Commands and flags show their full completion
 descriptions. The file preview is plain text, without syntax highlighting.
 Selecting an item does not execute it.
+
+## Codex
+
+`zsh/.config/zsh/codex.zsh` owns the Codex shell helper and completions.
+Sessions started inside `~/Github/stackx-track` use the existing `stackx-track`
+Codex profile. Other checkouts keep the default configuration. Maintenance
+commands (`update`, `doctor`, and `completion`) bypass the project profile.
+
+This machine uses Codex's standalone installer at `~/.local/bin/codex`.
+Update it with its built-in command:
+
+```sh
+codex update
+codex --version
+```
+
+Restart running Codex sessions after an update. Shell completion is generated
+from the installed binary when a terminal starts; run `exec zsh` to refresh it.
+This updates the CLI; it does not sync dotfiles or update AgentKit skills.
 
 ## Private shell settings
 
