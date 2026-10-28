@@ -1,4 +1,4 @@
-# Shell configuration dependencies. Install with: brew bundle
+# Shell and editor dependencies. Install with: brew bundle
 brew "stow"
 brew "fzf"
 brew "fzf-tab"
@@ -10,3 +10,5 @@ brew "mise"
 brew "lsd"
 brew "bison"
 brew "postgresql@16"
+brew "neovim"
+brew "tmux"

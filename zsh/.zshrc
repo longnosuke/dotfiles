@@ -16,9 +16,6 @@ if command -v phpenv >/dev/null 2>&1; then
 fi
 
 
-# mise version manager
-eval "$(mise activate zsh)"
-
 # Starship.rs
 eval "$(starship init zsh)"
 
@@ -92,6 +89,9 @@ esac
 
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH
+
+# Activate project runtimes after the other PATH additions.
+eval "$(mise activate zsh)"
 
 # Native command and flag descriptions for Tab completion.
 # Load after PATH setup so completion uses the installed CLI versions.

@@ -4,6 +4,9 @@
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/profile.post.bash" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/profile.post.bash"
 [ ! -f "$HOME/.cargo/env" ] || . "$HOME/.cargo/env"
 
+# Make standalone CLIs and personal scripts available in both Bash and Zsh.
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+
 if command -v mise >/dev/null; then
   if [ -z "${_MISE_ACTIVATED:-}" ]; then
     export _MISE_ACTIVATED=1

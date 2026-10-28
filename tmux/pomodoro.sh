@@ -2,8 +2,9 @@
 set -euo pipefail
 
 OS="$(uname)"
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 play_sound() {
-    local file="$HOME/personal/dotfiles/tmux/Ringing.mp3"
+    local file="$script_dir/Ringing.mp3"
     if [ "$OS" = "Darwin" ]; then
         # macOS
         afplay "$file" &

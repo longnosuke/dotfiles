@@ -20,3 +20,8 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 
 # Added by Obsidian
 export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
+# Keep project runtimes ahead of Homebrew in noninteractive login shells too.
+if command -v mise >/dev/null 2>&1; then
+  eval "$(command mise activate zsh --shims)"
+fi

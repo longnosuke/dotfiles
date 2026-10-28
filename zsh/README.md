@@ -13,6 +13,17 @@ Native `ak completion zsh`, `cf complete zsh`, and `codex completion zsh`
 scripts provide CLI subcommands and flag descriptions when those CLIs are
 installed.
 
+## Runtime versions
+
+`.zprofile` adds mise shims after Homebrew and the other login PATH setup, so
+noninteractive login shells such as `zsh -lc` also select project runtimes.
+`.zshrc` activates mise after its PATH additions for interactive terminals.
+Project version files such as `.ruby-version` take precedence over Homebrew Ruby.
+See [mise's shell setup](https://mise.jdx.dev/dev-tools/shims.html#add-shims-to-path).
+
+After changing login setup, run `exec zsh -l` or open a new login terminal.
+Restart editors and coding agents to refresh their inherited environment.
+
 ## Use completion
 
 1. Type `ak `, `ak kit `, `cf dns records `, `codex `, or a command followed by `--`.
@@ -45,6 +56,18 @@ codex --version
 Restart running Codex sessions after an update. Shell completion is generated
 from the installed binary when a terminal starts; run `exec zsh` to refresh it.
 This updates the CLI; it does not sync dotfiles or update AgentKit skills.
+
+## Bitwarden Secrets Manager
+
+`bws completions` generates shell scripts for Tab completion of Bitwarden
+Secrets Manager CLI commands and flags. Enable it in the current Zsh session:
+
+```zsh
+source <(bws completions zsh)
+```
+
+For future terminals, add that line to `zsh/.zshrc` after completion
+initialization, guarded with `command -v bws >/dev/null` if `bws` is optional.
 
 ## Private shell settings
 

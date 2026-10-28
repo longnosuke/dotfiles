@@ -1,4 +1,4 @@
-(^|/)\.git(/|$)
-(^|/)\.DS_Store$
-(^|/)README(\.md)?$
-(^|/)\.stow-local-ignore$
+\.git
+\.DS_Store
+README(\.md)?
+\.stow-local-ignore

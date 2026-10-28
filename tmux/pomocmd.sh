@@ -15,4 +15,5 @@ SESS=${SESS:-$DEFAULT_SESS}
 WORK=${WORK:-$DEFAULT_WORK}
 BREAK=${BREAK:-$DEFAULT_BREAK}
 
-~/personal/dotfiles/tmux/pomodoro.sh "$SESS" "$WORK" "$BREAK"
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+"$script_dir/pomodoro.sh" "$SESS" "$WORK" "$BREAK"
