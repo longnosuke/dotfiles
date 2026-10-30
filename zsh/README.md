@@ -24,6 +24,36 @@ See [mise's shell setup](https://mise.jdx.dev/dev-tools/shims.html#add-shims-to-
 After changing login setup, run `exec zsh -l` or open a new login terminal.
 Restart editors and coding agents to refresh their inherited environment.
 
+Mise activation resolves the installed executable through PATH, bypassing any
+existing shell function that may still reference an older installation. If a
+terminal reports a missing Mise binary after moving or reinstalling it, restart
+that terminal with `exec zsh -l`, then check `mise --version`.
+
+When moving Mise between Homebrew and a standalone installation, also rebuild
+its generated runtime shims so they point to the current executable:
+
+```sh
+command mise reshim --force
+exec zsh -l
+```
+
+Run this once after moving the binary, rather than on every shell startup.
+Mise owns installed binaries and generated shims outside this repository; Stow
+owns the tracked startup files and `mise/.config/mise/config.toml`.
+
+After pulling new shell helpers, restore their links through Stow before
+restarting the shell:
+
+```sh
+cd ~/Github/dotfiles
+bash scripts/link-dotfiles.sh --simulate --verbose
+bash scripts/link-dotfiles.sh
+exec zsh -l
+```
+
+The `zsh` package includes the Codex helper and private-settings loader. Keep
+their source files here; do not copy them into `~/.config/zsh`.
+
 ## Use completion
 
 1. Type `ak `, `ak kit `, `cf dns records `, `codex `, or a command followed by `--`.

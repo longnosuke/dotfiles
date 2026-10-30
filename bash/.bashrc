@@ -8,7 +8,7 @@
 if command -v mise >/dev/null; then
   if [ -z "${_MISE_ACTIVATED:-}" ]; then
     export _MISE_ACTIVATED=1
-    eval "$(mise activate bash)"
+    eval "$(command mise activate bash)"
   fi
 fi
 

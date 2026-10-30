@@ -90,8 +90,11 @@ esac
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH
 
+# Bypass an existing mise function, which may reference a removed binary.
 # Activate project runtimes after the other PATH additions.
-eval "$(mise activate zsh)"
+if command -v mise >/dev/null 2>&1; then
+  eval "$(command mise activate zsh)"
+fi
 
 # Native command and flag descriptions for Tab completion.
 # Load after PATH setup so completion uses the installed CLI versions.

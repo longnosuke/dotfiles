@@ -26,7 +26,7 @@ cd ~/Github/dotfiles
 brew bundle
 bash scripts/link-dotfiles.sh --simulate --verbose
 bash scripts/link-dotfiles.sh
-exec zsh
+exec zsh -l
 ```
 
 Install Oh My Zsh at `~/.oh-my-zsh` using its
