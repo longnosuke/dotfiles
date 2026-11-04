@@ -7,6 +7,8 @@ fpath=("$BREW_HOME/share/zsh-completions" $fpath)
 # Oh My Zsh plugins
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(git z)
+# Keep shell startup noninteractive so automation launch commands reach the prompt.
+zstyle ':omz:update' mode reminder
 source "$ZSH/oh-my-zsh.sh"
 
 # PHPENV

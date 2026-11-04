@@ -9,6 +9,12 @@ Oh My Zsh loads the `git` and `z` plugins. Starship owns the prompt.
 Tab, and `zsh-autosuggestions` supplies inline history suggestions.
 `zsh-autocomplete`, Powerlevel10k, and experimental menu colors are inactive.
 
+Oh My Zsh updates use reminder mode. Shell startup must not ask an update
+question: it can consume commands sent by Orca or other terminal automation
+before the prompt is ready. Run `omz update` manually when convenient.
+This setting lives in the tracked `.zshrc`, before Oh My Zsh loads, so it also
+applies on other machines after pulling these dotfiles and restarting Zsh.
+
 Native `ak completion zsh`, `cf complete zsh`, and `codex completion zsh`
 scripts provide CLI subcommands and flag descriptions when those CLIs are
 installed.
