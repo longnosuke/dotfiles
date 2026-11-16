@@ -25,6 +25,8 @@ installed.
 noninteractive login shells such as `zsh -lc` also select project runtimes.
 `.zshrc` activates mise after its PATH additions for interactive terminals.
 Project version files such as `.ruby-version` take precedence over Homebrew Ruby.
+The shared `.profile` stays shell-neutral; Bash activation belongs in `.bashrc`
+and Zsh activation in `.zshrc`, so Zsh never evaluates Bash completion hooks.
 See [mise's shell setup](https://mise.jdx.dev/dev-tools/shims.html#add-shims-to-path).
 
 After changing login setup, run `exec zsh -l` or open a new login terminal.

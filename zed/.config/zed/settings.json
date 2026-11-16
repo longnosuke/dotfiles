@@ -91,6 +91,9 @@
   "base_keymap": "JetBrains",
 
   "agent": {
+    "sandbox_permissions": {
+      "allow_unsandboxed": true
+    },
     "threads_sidebar": {
       "position": "right"
     },

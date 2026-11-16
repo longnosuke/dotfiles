@@ -20,3 +20,6 @@ idiomatic_version_file_enable_tools = ["ruby", "node", "go", "python", "npm", "p
 # Precompiled rubies: install in seconds, immune to OpenSSL/Xcode toolchain
 # drift. Compile-from-source only matters for custom configure flags.
 ruby.compile = false
+
+[settings.self_update]
+auto = true
