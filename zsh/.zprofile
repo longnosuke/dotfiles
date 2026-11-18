@@ -25,3 +25,7 @@ export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 if command -v mise >/dev/null 2>&1; then
   eval "$(command mise activate zsh --shims)"
 fi
+
+# >>> Codex installer >>>
+export PATH="/Users/liamnguyen/.local/bin:$PATH"
+# <<< Codex installer <<<

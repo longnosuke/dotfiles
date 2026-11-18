@@ -23,11 +23,23 @@ installed.
 
 `.zprofile` adds mise shims after Homebrew and the other login PATH setup, so
 noninteractive login shells such as `zsh -lc` also select project runtimes.
-`.zshrc` activates mise after its PATH additions for interactive terminals.
+`.zshrc` adds mise shims and activates mise after its PATH additions for
+interactive terminals. It removes inherited NVM runtime paths and does not
+autoload NVM, keeping mise ahead of Vite+ and other Node installations.
 Project version files such as `.ruby-version` take precedence over Homebrew Ruby.
 The shared `.profile` stays shell-neutral; Bash activation belongs in `.bashrc`
 and Zsh activation in `.zshrc`, so Zsh never evaluates Bash completion hooks.
 See [mise's shell setup](https://mise.jdx.dev/dev-tools/shims.html#add-shims-to-path).
+
+The global Node request is `lts`, which follows the current LTS line rather
+than staying on Node 24. Projects can still select their own Node version.
+Install the latest LTS initially, or refresh it later, with:
+
+```sh
+mise use -g node@lts
+mise upgrade node
+node --version
+```
 
 After changing login setup, run `exec zsh -l` or open a new login terminal.
 Restart editors and coding agents to refresh their inherited environment.
@@ -83,8 +95,15 @@ Sessions started inside `~/Github/stackx-track` use the existing `stackx-track`
 Codex profile. Other checkouts keep the default configuration. Maintenance
 commands (`update`, `doctor`, and `completion`) bypass the project profile.
 
-This machine uses Codex's standalone installer at `~/.local/bin/codex`.
-Update it with its built-in command:
+Codex uses the standalone installer at `~/.local/bin/codex`, independently of
+Node and npm. Install or update it with the same command:
+
+```sh
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+```
+
+Avoid parallel npm or Homebrew Codex installs, which can shadow this binary.
+The installed CLI also provides an update command:
 
 ```sh
 codex update

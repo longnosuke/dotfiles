@@ -5,7 +5,7 @@
 
 [tools]
 ruby = "4.0.2"
-node = { version = "24.17.0", postinstall = "npm install -g claudekit-cli" }
+node = { version = "lts", postinstall = "npm install -g claudekit-cli" }
 go = "1.25.1"
 python = "3.13.7"
 uv = "latest"

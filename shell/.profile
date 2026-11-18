@@ -7,7 +7,6 @@
 # Make standalone CLIs and personal scripts available in both Bash and Zsh.
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
-export BASH_ENV="$HOME/.bashrc"
 
 # Vite+ bin (https://viteplus.dev)
 [ ! -f "$HOME/.config/vite-plus/env" ] || . "$HOME/.config/vite-plus/env"

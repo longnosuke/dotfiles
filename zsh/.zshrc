@@ -94,7 +94,10 @@ export PATH=$HOME/.opencode/bin:$PATH
 
 # Bypass an existing mise function, which may reference a removed binary.
 # Activate project runtimes after the other PATH additions.
+# Drop inherited NVM runtimes so mise owns Node in new terminals.
+path=("${(@)path:#$HOME/.nvm/versions/node/*/bin}")
 if command -v mise >/dev/null 2>&1; then
+  eval "$(command mise activate zsh --shims)"
   eval "$(command mise activate zsh)"
 fi
 
